@@ -4,6 +4,8 @@ import { Text, clx } from "@medusajs/ui"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
+import logo from "/public/logo_normal.png"
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
@@ -12,13 +14,19 @@ export default async function Footer() {
   return (
     <footer className="border-t border-ui-border-base w-full">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-center justify-between py-40">
+          <div className="relative flex w-64 h-24 ">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="absolute  w-full h-full overflow-hidden"
             >
-              Medusa Store
+              <Image
+                src={logo}
+                alt="Picture of the author"
+                className=" object-cover"
+                priority
+                fill
+              ></Image>
             </LocalizedClientLink>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
@@ -107,26 +115,26 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+              <span className="txt-small-plus txt-ui-fg-base">Social</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
                   <a
-                    href="https://github.com/medusajs"
+                    href="https://www.tiktok.com/@marymodaexclusiva"
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    GitHub
+                    Tiktok
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="https://docs.medusajs.com"
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    Documentation
+                    Facebook
                   </a>
                 </li>
                 <li>
@@ -136,18 +144,19 @@ export default async function Footer() {
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    Source code
+                    Instagram
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+        <div className="flex w-full mb-16  justify-center text-ui-fg-muted">
           <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
+            © {new Date().getFullYear()} Mary Moda Exclusiva. All rights
+            reserved.
           </Text>
-          <MedusaCTA />
+          {/* <MedusaCTA /> */}
         </div>
       </div>
     </footer>
